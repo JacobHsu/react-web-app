@@ -15,6 +15,42 @@ containers 容器型組件
 App.css文件 移到containers App下  
 將index.js 引用路徑修改  
 
+# State
+
+狀態 是決定前端應用的展示 與 驅動前端數據流正常工作的核心  
+商品(products) 店鋪(shops) 訂單(orders) 評論(comments)  
+各頁面UI狀態 
+前端基礎狀態 登入態、全局異常訊息  
+
+# Redux 模塊分層
+
+容器組件 -> 頁面狀態 通用前端狀態 -> 領域狀態  
+entities 領域狀態模塊  商品(products) 店鋪(shops) 訂單(orders) 評論(comments)    
+modules 首頁(home)的UI狀態  商品詳情頁(detail)的UI狀態 通用基礎狀態(app)
+index.js 聚合所有UI狀態加領域狀態  
+
+redux/store.js 根據模塊當中已定義 創建最終的store  
+
+入口文件引用使用store
+```js
+import { Provider } from "react-redux";
+import store from "./redux/store";  
+```
+
+依賴
+```js
+"dependencies": {
+    "react": "^16.4.1",
+    "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0"
+  },
+```
+`$ npm i react-redux react-router-dom redux redux-thunk`  
+
 # deploy
 
 react-cli `npm run build`  build資料夾  
