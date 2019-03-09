@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+# Redux
+
+Redux默認不支持，異步action，但網路請求勢必遇到  
+網路請求層的基礎封裝，有較多的模板代碼需要輸寫，可使用redux中間件封裝  
+redux/middleware/api.js  
+redux/modules/home.js redux/modules/entities/product.js  
+最後一步 將中間件添加到redux store中  
+
 ## Available Scripts
 
 In the project directory, you can run:
