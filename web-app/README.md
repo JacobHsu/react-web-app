@@ -2,11 +2,37 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Redux
 
-Redux默認不支持，異步action，但網路請求勢必遇到  
-網路請求層的基礎封裝，有較多的模板代碼需要輸寫，可使用redux中間件封裝  
+Redux 默認不支持，異步 action，但網路請求勢必遇到  
+網路請求層的基礎封裝，有較多的模板代碼需要輸寫，可使用 redux 中間件封裝  
 redux/middleware/api.js  
 redux/modules/home.js redux/modules/entities/product.js  
-最後一步 將中間件添加到redux store中  
+最後一步 將中間件添加到 redux store 中
+
+###　通用錯誤處理
+
+有了狀態模塊　 redux/modules/app.js
+有了對應錯誤顯示的組件　 components/ErrorToast/index.js
+透過容器組件連接起來　 containers/App/index.js App 是最外層應用的根組件　錯誤訊息是全局展示的
+
+## 展示型組件 和 容器行組件
+
+Redux 的 React 綁定擁抱了分離 presentational 和 container component 的概念。
+
+|    | Presentational Components      |  Container Components |
+|----------|:-------------:|------:|
+| 用途 |  怎麼看事情（markup, styles) | 怎麼做事情 (抓資料, 更新 state) |
+| 意識到Redux |    否   |   是 |
+| 取得資料 | 從 props 讀取資料 |  訂閱 Redux state |
+| 改變資料 | 從 props 呼叫 callback |  Dispatch Redux action |
+| 從哪被寫入 | 經由手動 |    通常由 React Redux 產生 |
+
+我們大多數是寫 presentational component，但我們將需要產生一些 container component 來連結 Redux store。
+
+雖然技術上來說你可以使用 `store.subscribe()` 來手動寫 container component，但我們不建議你這樣做，因為 React Redux 有做許多手寫難以達成的效能優化。因此，我們以下將使用 React Redux 提供的 `connect()` function 產生 container component 而非手動寫成。
+
+ex : `container/App/index.js` export default connect
+
+[Presentational 和 Container Component](https://chentsulin.github.io/redux/docs/basics/UsageWithReact.html)
 
 ## Available Scripts
 
