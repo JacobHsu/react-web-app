@@ -34,6 +34,11 @@ ex : `container/App/index.js` export default connect
 
 [Presentational 和 Container Component](https://chentsulin.github.io/redux/docs/basics/UsageWithReact.html)
 
+
+## Remove
+
+移除 `App.css` create react app默認的樣式
+
 ## Available Scripts
 
 In the project directory, you can run:
