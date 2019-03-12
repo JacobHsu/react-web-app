@@ -64,7 +64,6 @@ category [react-slick](https://github.com/akiran/react-slick): React carousel co
 `npm i react-slick`  
 
 https://www.flaticon.com/packs/film-industry-14
-
 https://zh.wikipedia.org/wiki/电影类型
 
 

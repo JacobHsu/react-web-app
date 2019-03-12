@@ -39,6 +39,10 @@ ex : `container/App/index.js` export default connect
 
 移除 `App.css` create react app默認的樣式
 
+## Note
+
+根目錄(src/components)下定義 loading組件  
+
 ## Available Scripts
 
 In the project directory, you can run:

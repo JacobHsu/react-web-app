@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LikeItem from "../LikeItem";
+import Loading from "../../../../components/Loading";
 import "./style.css";
 
 const dataSource = [
@@ -66,19 +67,75 @@ const dataSource = [
 ];
 
 class LikeList extends Component {
+  //儲存會發生變化的狀態
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+    this.state = {
+      data: dataSource,
+      loadTimes: 1 //加載幾次的標記
+    };
+    this.removeListener = false;
+  }
   render() {
-    const data = dataSource;
+    const { data, loadTimes } = this.state;
+    console.log(111, loadTimes);
+    //下拉兩次 加載更多 下拉三次 查看更多
     return (
-      <div className="likeList">
+      <div ref={this.myRef} className="likeList">
         <div className="likeList__header">猜你喜歡</div>
         <div className="likeList__list">
           {data.map((item, index) => {
-            return <LikeItem key={item.id} data={item} />;
+            return <LikeItem key={index} data={item} />;
           })}
         </div>
+        {loadTimes < 3 ? (
+          <Loading />
+        ) : (
+          <a className="likeList__viewAll">查看更多</a>
+        )}
       </div>
     );
   }
+
+  componentDidMount() {
+    document.addEventListener("scroll", this.handleScroll);
+  }
+
+  componentDidUpdate() {
+    if (this.state.loadTimes >= 3 && !this.removeListener) {
+      document.removeEventListener("scroll", this.handleScroll); //解除綁定不再監聽事件
+      this.removeListener = true;
+    }
+  }
+
+  componentWillUnmount() {
+    //如果沒被超過三次DidUpdate階段事先移除 移除
+    if (!this.removeListener) {
+      document.removeListener("scroll", this.handleScroll);
+    }
+  }
+
+  //處理螢幕滾動事件，實現加載更多的效果
+  handleScroll = () => {
+    const scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop; //獲取頁面滾動的距離
+    const screenHeight = document.documentElement.clientHeight; // 螢幕可視區域高度
+    const likeListTop = this.myRef.current.offsetTop; //likeList組件距離頂部頁面距離
+    const LikeListHeight = this.myRef.current.offsetHeight; //likeList組件內容高度
+
+    //如果滾動的距離 讓組件內容區域的最底部 呈現在整個可視頁面的最底部 開啟加載更多
+    if (scrollTop >= LikeListHeight + likeListTop - screenHeight) {
+      const newData = this.state.data.concat(dataSource); //複製數據模擬加載
+      const newLoadTimes = this.state.loadTimes + 1;
+      setTimeout(() => {
+        this.setState({
+          data: newData,
+          loadTimes: newLoadTimes
+        });
+      });
+    }
+  };
 }
 
 export default LikeList;
