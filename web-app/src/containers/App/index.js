@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import ErrorToast from "../../components/ErrorToast"
 import { actions as appActions, getError } from "../../redux/modules/app";
+import Home from '../Home';
 import './App.css';
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
     return (
       <div className="App">
          hello react
+         <Home/>
          {error ? <ErrorToast msg={error} clearError={clearError} /> : null}
       </div>
     );

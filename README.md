@@ -1,5 +1,12 @@
 # react-web-app
 
+## page
+
+src/containers/Home/compoents/ `HomeHeader Banner Category Headline Activity Discount LikeList`   
+src/components 通用組件　`Footer`
+
+## React
+
 [Create React App](https://reactjs.org/docs/create-a-new-react-app.html)  
 
 ```bash
@@ -50,6 +57,16 @@ import store from "./redux/store";
   },
 ```
 `$ npm i react-redux react-router-dom redux redux-thunk`  
+
+# References 
+
+category [react-slick](https://github.com/akiran/react-slick): React carousel component   [Auto Play](https://react-slick.neostack.com/docs/example/auto-play) 
+`npm i react-slick`  
+
+https://www.flaticon.com/packs/film-industry-14
+
+https://zh.wikipedia.org/wiki/电影类型
+
 
 # deploy
 
