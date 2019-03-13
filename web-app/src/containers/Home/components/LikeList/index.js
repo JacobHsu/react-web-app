@@ -92,7 +92,7 @@ class LikeList extends Component {
         {loadTimes < 3 ? (
           <Loading />
         ) : (
-          <a className="likeList__viewAll">查看更多</a>
+          <a className="likeList__viewAll" href="https://jacobhsu.github.io/react-web-app/">查看更多</a>
         )}
       </div>
     );

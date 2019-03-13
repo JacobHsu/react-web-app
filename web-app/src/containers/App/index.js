@@ -15,7 +15,6 @@ class App extends Component {
     } = this.props;
     return (
       <div className="App">
-         hello react
          <Home/>
          {error ? <ErrorToast msg={error} clearError={clearError} /> : null}
       </div>
