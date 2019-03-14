@@ -79,7 +79,6 @@ class LikeList extends Component {
   }
   render() {
     const { data, loadTimes } = this.state;
-    console.log(111, loadTimes);
     //下拉兩次 加載更多 下拉三次 查看更多
     return (
       <div ref={this.myRef} className="likeList">
@@ -99,7 +98,17 @@ class LikeList extends Component {
   }
 
   componentDidMount() {
-    document.addEventListener("scroll", this.handleScroll);
+    //透過 props.pageCount 判斷 達到數據緩存作用
+    //小於3才監聽scroll事件
+    if(this.state.loadTimes < 3) {
+      document.addEventListener("scroll", this.handleScroll);
+    } else {
+      this.removeListener = true;
+    }
+    //大於0表示加載過，不重覆加載
+    if(this.state.loadTimes === 0) { 
+      this.props.fetchData();
+    }
   }
 
   componentDidUpdate() {
