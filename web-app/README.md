@@ -8,6 +8,10 @@ redux/middleware/api.js
 redux/modules/home.js redux/modules/entities/product.js  
 最後一步 將中間件添加到 redux store 中
 
+首頁需要數據管理的是 超值特惠 和 猜你喜歡 組件  其他是靜態組件展示
+數據均為產品相關 redux/modules/entities/product  
+猜你喜歡 有分頁加載 要保存分頁訊息  
+
 ###　通用錯誤處理
 
 有了狀態模塊　 redux/modules/app.js

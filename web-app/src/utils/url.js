@@ -1,4 +1,5 @@
 //rowIndex,pageSize 作為查詢參數  
 export default {
-  getProductList: (rowIndex, pageSize) => `/mock/product/likes.json?rowIndex=${rowIndex}&pageSize=${pageSize}`,
+  //path 不同資源的類型 eg:likes
+  getProductList: (path, rowIndex, pageSize) => `/mock/product/${path}.json?rowIndex=${rowIndex}&pageSize=${pageSize}`,
 };
