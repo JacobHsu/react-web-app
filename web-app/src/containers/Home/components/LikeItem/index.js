@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom"
 import "./style.css";
 
 class LikeItem extends Component {
   render() {
     const {
+      id,
       name,
       tag,
       picture,
@@ -13,7 +15,7 @@ class LikeItem extends Component {
       year
     } = this.props.data;
     return (
-      <a className="likeItem" href="http://google.com">
+      <Link className="likeItem" to={`/detail/${id}`}>
         <div className="likeItem__picContainer">
           <div className="likeItem__picTag">{tag}</div>
           <img className="likeItem__pic" src={picture} alt="pic" />
@@ -29,7 +31,7 @@ class LikeItem extends Component {
             <div className="likeItem__sale">{year}</div>
           </div>
         </div>
-      </a>
+      </Link>
     );
   }
 }
