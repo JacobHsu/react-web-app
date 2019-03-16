@@ -47,6 +47,15 @@ ex : `container/App/index.js` export default connect
 
 根目錄(src/components)下定義 loading組件  
 
+# Router
+
+App/index.js
+`<Route path="/detail/:id" component={ProductDetail} />`  
+`import ProductDetail from "../ProductDetail";`  
+containers/ProductDetail/index.js  
+`import ProductOverview  from "./components/ProductOverview";`  
+
+
 ## Available Scripts
 
 In the project directory, you can run:
