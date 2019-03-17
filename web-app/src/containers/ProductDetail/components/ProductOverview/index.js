@@ -29,7 +29,7 @@ class ProductOverview extends Component {
         <ul className="productOverview__remark">
           <li className="productOverview__remarkItem">
             <i className="productOverview__sign1" />
-            <span className="productOverview__desc">隨時可退</span>
+            <span className="productOverview__desc">7日內可退</span>
           </li>
           <li className="productOverview__remarkItem">
             <i className="productOverview__sign2" />
