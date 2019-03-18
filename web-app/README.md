@@ -12,6 +12,10 @@ redux/modules/home.js redux/modules/entities/product.js
 數據均為產品相關 redux/modules/entities/product  
 猜你喜歡 有分頁加載 要保存分頁訊息  
 
+商品詳情頁 商品詳情 店家訊息
+
+note: 處理state定義 處理actions定義 處理reducer定義 
+
 ###　通用錯誤處理
 
 有了狀態模塊　 redux/modules/app.js
@@ -55,6 +59,10 @@ App/index.js
 containers/ProductDetail/index.js  
 `import ProductOverview  from "./components/ProductOverview";`  
 
+# debug
+
+> Attempted import error: 'schema' is not exported from './entities/products' (imported as 'productSchema').
+`const schema = {`  -> `export const schema = {` redux/modules/entities/products.js
 
 ## Available Scripts
 
