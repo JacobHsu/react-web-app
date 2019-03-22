@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 class ProductOverview extends Component {
   render() {
+    const {id, product, picture, description, currentPrice, oldPrice} = this.props.data;
     return (
       <div className="productOverview">
         <div className="productOverview__header">
@@ -10,21 +12,21 @@ class ProductOverview extends Component {
             <img
               alt=""
               className="productOverview__img"
-              src="https://m.media-amazon.com/images/M/MV5BMjI5ODQwMjg5N15BMl5BanBnXkFtZTgwMTk2Njk5NDM@._V1_SX1777_CR0,0,1777,937_AL_.jpg"
+              src={picture}
             />
           </div>
           <div className="productOverview__baseInfo">
-            <div className="productOverview__title">Infinity War</div>
+            <div className="productOverview__title">{product}</div>
             <div className="productOverview__content">
-              漫威電影宇宙10年集大成巔峰之作！史上最強超級英雄全面集結。
+              {description}
             </div>
           </div>
         </div>
         <div className="productOverview__purchase">
           <span className="productOverview__symbol">TWD</span>
-          <span className="productOverview__price">290</span>
-          <span className="productOverview__price--old">490</span>
-          <a className="productOverview__btn">立即購買</a>
+          <span className="productOverview__price">{currentPrice}</span>
+          <span className="productOverview__price--old">{oldPrice}</span>
+          <Link className="productOverview__btn" to={`/purchase/${id}`}>立即購買</Link>
         </div>
         <ul className="productOverview__remark">
           <li className="productOverview__remarkItem">

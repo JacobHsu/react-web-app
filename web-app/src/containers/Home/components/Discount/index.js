@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import './style.css';
+import "./style.css";
 
 const dataSource = [
   {
-    id: "m-100",
+    id: "m-1",
     url: "https://www.imdb.com/title/tt0848228/?ref_=nv_sr_5",
     shopId: "s-100",
     shop: "The Avengers",
@@ -15,7 +15,7 @@ const dataSource = [
       "https://m.media-amazon.com/images/M/MV5BMTM2MzY1ODc1Nl5BMl5BanBnXkFtZTcwNTg4OTY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg"
   },
   {
-    id: "m-101",
+    id: "m-2",
     url: "https://www.imdb.com/title/tt2395427/?ref_=nv_sr_8",
     shopId: "s-101",
     shop: "Age of Ultron",
@@ -26,7 +26,7 @@ const dataSource = [
       "https://m.media-amazon.com/images/M/MV5BNTk4NjQ2MTMxNV5BMl5BanBnXkFtZTgwOTY3MjQ0NDE@._V1_.jpg"
   },
   {
-    id: "m-102",
+    id: "m-3",
     url: "https://www.imdb.com/title/tt4154756/?ref_=nv_sr_4",
     shopId: "s-102",
     shop: "Infinity War",
@@ -40,7 +40,7 @@ const dataSource = [
 
 class Discount extends Component {
   render() {
-      const data = dataSource;
+    const data = dataSource;
     return (
       <div className="discount">
         <a
@@ -54,9 +54,18 @@ class Discount extends Component {
         <div className="discount__content">
           {data.map((item, index) => {
             return (
-              <Link key={item.id}  to={`/detail/${item.id}`} className="discount__item" href={item.url}>
+              <Link
+                key={item.id}
+                to={`/detail/${item.id}`}
+                className="discount__item"
+              >
                 <div className="discount__itemPic">
-                  <img width="100%" height="100%" src={item.picture} alt="itemPic"/>
+                  <img
+                    width="100%"
+                    height="100%"
+                    src={item.picture}
+                    alt="itemPic"
+                  />
                 </div>
                 <div className="discount__itemTitle">{item.shop}</div>
                 <div className="discount__itemPriceWrapper">

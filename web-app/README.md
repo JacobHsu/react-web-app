@@ -24,7 +24,8 @@ note: 處理state定義 處理actions定義 處理reducer定義
 
 ## 展示型組件 和 容器行組件
 
-Redux 的 React 綁定擁抱了分離 presentational 和 container component 的概念。
+Redux 的 React 綁定擁抱了分離 presentational 和 container component 的概念。  
+UI 組件負責 UI 的呈現，容器組件負責管理數據和邏輯。  
 
 |    | Presentational Components      |  Container Components |
 |----------|:-------------:|------:|
@@ -41,6 +42,51 @@ Redux 的 React 綁定擁抱了分離 presentational 和 container component 的
 ex : `container/App/index.js` export default connect
 
 [Presentational 和 Container Component](https://chentsulin.github.io/redux/docs/basics/UsageWithReact.html)
+
+
+### 商品詳情
+
+領域實體: 商品的詳情資訊 店家資訊
+動態資料 redux + mock數據  
+
+reducer 抽象封裝至 utils/createReducer  
+服務於頁面的實體模塊 modules/entities   
+
+modules/detail: 
+state> product,relatedShop
+actions (by api)> loadProductDetail,loadShopById
+reducers>  product,relatedShop  (combineReducers)
+
+getProductDetail: (id) => `/mock/product_detail/${id}.json`,
+
+modules/entities/products 定義selectors函數 提供getProductDetail獲取商品詳情 判斷是否要api data 
+
+組件連結Redux  
+商品詳情的組件和Redux的狀態管理層進行連接 modules/detail 創建selectors函數 供商品詳情頁容器型組件使用  
+
+containers/ProductDetail/index.js 
+```js
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ProductDetail);
+```
+
+mapStateToProps -> getProduct (@ /redux/modules/detail) ->  getProductDetail (@/entities/products)
+
+
+<ProductOverview data={product}/>
+@/components/ProductOverview
+
+
+
+componentDidMount(@containers/ProductDetail/index) -> loadProductDetail (@redux/modules/detail) -> fetchProductDetail
+
+`const { product } = this.props;`  this.props 透過api取得mock data 賦值給 product
+父 `render() { <ProductOverview data={product}/>`  
+子 (@/components/ProductOverview) `this.props.data` 取得mock data  
+
+
 
 
 ## Remove
@@ -63,6 +109,27 @@ containers/ProductDetail/index.js
 
 > Attempted import error: 'schema' is not exported from './entities/products' (imported as 'productSchema').
 `const schema = {`  -> `export const schema = {` redux/modules/entities/products.js
+
+> Promise {<pending>} [[PromiseValue]]: Object error: "Cannot read property 'id' of undefined"
+utils/request.js `if(response.state === 200)` -> `if(response.status === 200) {`
+`handleResponse(url, response);` -> `return handleResponse(url, response);` 
+Note: middleware api.js 會調用 utils/request.js
+
+> TypeError: Cannot read property 'id' of null
+`<ProductOverview data={product}/>` -> `{product && <ProductOverview data={product} />}`
+判斷有值再炫染
+
+> redux\modules\entities\products.js:29:13
+ export const getProductById = (state, id) => {
+A: 報錯在下一個funciont 實際錯誤在上面的function 
+```js
+ getProductDetail = (state, id) => {
+  const product = state.entities.product[id];
+```   
+少打s
+```js
+  const product = state.entities.products[id];
+```    
 
 ## Available Scripts
 

@@ -3,7 +3,7 @@ import { combineReducers } from "redux";
 import url from "../../utils/url";
 import { FETCH_DATA } from "../middleware/api";
 import { schema as shopSchema, getShopById } from "./entities/shops";
-import { schema as productSchema, getProductDetail } from "./entities/products";
+import { schema as productSchema, getProductDetail, getProductById } from "./entities/products";
 
 //兩組action透過調用後台api 來獲取對應領域實體數據
 export const types = {
@@ -17,6 +17,7 @@ export const types = {
   FETCH_SHOP_FAILURE: "DETAIL/FETCH_PRODUCT_DETAIL_FAILURE"
 };
 
+//初始商品與店家狀態
 const initialState = {
   product: {
     isFetching: false, //當前是否抓取資料中
@@ -35,10 +36,12 @@ export const actions = {
     return (dispatch, getState) => {
       const product = getProductDetail(getState(), id);
       if (product) {
-        //判斷是否資料存在再抓取
+        //判斷是否資料存在再抓取 將當前的id更新到state中 
         return dispatch(fetchProductDetailSuccess(id));
       }
-      const endpoint = url.getProductDetail(id);
+      const endpoint = url.getProductDetail(id); //  /mock/product_detail/m-1.json
+      //有了url 借助redux middleware dispatch 發送異步action
+      console.log( endpoint, dispatch(fetchProductDetail(endpoint, id)) );
       return dispatch(fetchProductDetail(endpoint, id));
     };
   },
@@ -106,7 +109,8 @@ const product = (state = initialState.product, action) => {
   }
 };
 
-// 店舖reducer
+
+// 店家reducer
 const relatedShop = (state = initialState.relatedShop, action) => {
   switch (action.type) {
     case types.FETCH_SHOP_REQUEST:
@@ -126,3 +130,22 @@ const reducer = combineReducers({
   relatedShop
 });
 export default reducer;
+
+
+
+// selectors 在商品詳情頁當中的容器型組件中去使用
+//獲取商品詳情
+export const getProduct = (state, id) => {
+  return getProductDetail(state, id)
+}
+
+//獲取管理的店家訊息
+export const getRelatedShop = (state, productId) => {
+  //根據商品id獲取店家訊息
+  const product = getProductById(state, productId); //透過product對應的實體模塊獲取資料
+  let shopId = product ? product.nearestShop : null;
+  if(shopId) {
+    return getShopById(state, shopId);
+  }
+  return null;
+}
