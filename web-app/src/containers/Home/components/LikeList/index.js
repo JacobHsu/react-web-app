@@ -121,7 +121,7 @@ class LikeList extends Component {
   componentWillUnmount() {
     //如果沒被超過三次DidUpdate階段事先移除 移除
     if (!this.removeListener) {
-      document.removeListener("scroll", this.handleScroll);
+      document.removeEventListener("scroll", this.handleScroll);
     }
   }
 

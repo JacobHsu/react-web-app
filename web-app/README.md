@@ -119,6 +119,13 @@ Note: middleware api.js 會調用 utils/request.js
 `<ProductOverview data={product}/>` -> `{product && <ProductOverview data={product} />}`
 判斷有值再炫染
 
+> Uncaught TypeError: document.removeListener is not a function
+likeList/index.js
+```js  
+componentWillUnmount() {
+  document.removeEventListener(
+```
+
 > redux\modules\entities\products.js:29:13
  export const getProductById = (state, id) => {
 A: 報錯在下一個funciont 實際錯誤在上面的function 
