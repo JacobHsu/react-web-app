@@ -1,0 +1,21 @@
+{
+    "id": "m-1",
+    "shopIds": ["s-10","s-11","s-12"],
+    "nearestShop": "s-10",
+    "shop": "movie",
+    "tag": "",
+    "picture": "https://m.media-amazon.com/images/M/MV5BMTM2MzY1ODc1Nl5BMl5BanBnXkFtZTcwNTg4OTY3Nw@@._V1_SX1777_CR0,0,1777,999_AL_.jpg",
+    "product": "The Avengers",
+    "description": "漫威電影宇宙10年集大成巔峰之作！史上最強超級英雄全面集結。",
+    "currentPrice": 290,
+    "oldPrice": 490,
+    "saleDesc": "",
+    "detail":{
+        "category": "",
+        "products":[{"name":"movie", "quantity":"1", "price":"290元"}],
+        "remark":"hero"
+    },
+    "validityPeriod": "2018-04-23至2019-04-16",
+    "purchaseNotes":[{"title":"除外日期","content":"有效期內週末、假日可用"},{"title":"規則提醒","content":"1人使用"}]
+  }
+  
