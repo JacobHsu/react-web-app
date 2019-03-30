@@ -11,8 +11,8 @@
     "oldPrice": 490,
     "saleDesc": "",
     "detail":{
-        "category": "",
-        "products":[{"name":"movie", "quantity":"1", "price":"290元"}],
+        "category": "電影",
+        "products":[{"name":"Infinity War", "quantity":"1", "price":"290元"}],
         "remark":"hero"
     },
     "validityPeriod": "2018-04-23至2019-04-16",

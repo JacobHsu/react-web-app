@@ -16,15 +16,19 @@ import {
 class ProductDetail extends Component {
   render() {
     // this.props  output detail combineReducers
-    const { product } = this.props;  
+    const { product, relatedShop } = this.props;  
     return (
       <div>
         <Header title="商品詳情" onBack={this.handleBack} grey />
         {product && <ProductOverview data={product} />}
-        <ShopInfo />
-        <Detail />
-        <Remark />
-        <BuyButton />
+        {relatedShop && <ShopInfo data={relatedShop} total={product.shopIds.length}/>}
+        {product && (
+          <div>
+            <Detail data={product} />
+            <Remark data={product} />
+            <BuyButton productId={product.id} />
+          </div>
+        )}
       </div>
     );
   }

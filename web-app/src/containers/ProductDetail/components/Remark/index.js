@@ -3,6 +3,7 @@ import './style.css';
 
 class Remark extends Component {
   render() {
+    const { purchaseNotes, validityPeriod } = this.props.data;
     return (
       <div className="remark">
         <div className="remark__header">
@@ -12,26 +13,16 @@ class Remark extends Component {
         <div className="remark__list">
           <dl className="remark__item">
             <dt className="remark__itemTitle">有效期</dt>
-            <dd className="remark__itemDesc">終生有效</dd>
+            <dd className="remark__itemDesc">{validityPeriod}</dd>
           </dl>
-          <dl className="remark__item">
-            <dt className="remark__itemTitle">除外日期</dt>
-            <dd className="remark__itemDesc">無</dd>
-          </dl>
-          <dl className="remark__item">
-            <dt className="remark__itemTitle">使用時間</dt>
-            <dd className="remark__itemDesc">啟用即可使用</dd>
-          </dl>
-          <dl className="remark__item">
-            <dt className="remark__itemTitle">預約提醒</dt>
-            <dd className="remark__itemDesc">
-              無需預約
-            </dd>
-          </dl>
-          <dl className="remark__item">
-            <dt className="remark__itemTitle">規則提醒</dt>
-            <dd className="remark__itemDesc"></dd>
-          </dl>
+          {purchaseNotes.map((item, index) => {
+            return (
+              <dl key={index} className="remark__item">
+                <dt className="remark__itemTitle">{item.title}</dt>
+                <dd className="remark__itemDesc">{item.content}</dd>
+              </dl>
+            );
+          })}
         </div>
       </div>
     );

@@ -2,6 +2,6 @@
 export default {
   //path 不同資源的類型 eg:likes
   getProductList: (path, rowIndex, pageSize) => `/mock/product/${path}.json?rowIndex=${rowIndex}&pageSize=${pageSize}`,
-  getProductDetail: (id) => `/mock/product_detail/${id}.json`,
+  getProductDetail: (id) => `/react-web-app/mock/product_detail/${id}.json`,
   getShopById: (id) => `/mock/shops/${id}.json`
 };

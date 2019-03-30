@@ -13,7 +13,7 @@
     "detail":{
         "category": "電影",
         "products":[{"name":"Age of Ultron", "quantity":"1", "price":"290元"}],
-        "remark":"hero"
+        "remark":"Extras"
     },
     "validityPeriod": "2018-04-23至2019-04-16",
     "purchaseNotes":[{"title":"除外日期","content":"有效期內週末、假日可用"},{"title":"規則提醒","content":"1人使用"}]

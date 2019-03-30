@@ -3,6 +3,11 @@ import "./style.css";
 
 class Detail extends Component {
   render() {
+    const {
+      detail: { category, products, remark },
+      currentPrice,
+      oldPrice
+    } = this.props.data;
     return (
       <div className="detail">
         <div className="detail__header">
@@ -13,14 +18,18 @@ class Detail extends Component {
           <tbody>
             <tr className="detail__row">
               <th colSpan="3" className="detail__category">
-                電影
+              {category}
               </th>
             </tr>
-            <tr className="detail__row">
-              <td>Infinity War</td>
-              <td className="detail__td--alignRight">1</td>
-              <td className="detail__td--alignRight">490元</td>
-            </tr>
+            {products.map((item, index) => {
+              return (
+                <tr key={index} className="detail__row">
+                  <td>{item.name}</td>
+                  <td className="detail__td--alignRight">{item.quantity}</td>
+                  <td className="detail__td--alignRight">{item.price}</td>
+                </tr>
+              );
+            })}
             <tr className="detail__row">
               <td />
               <td className="detail__td--price">
@@ -29,14 +38,14 @@ class Detail extends Component {
                 <strong className="detail__td--priceNew">優惠價</strong>
               </td>
               <td className="detail__td--price">
-                490元
+                {oldPrice}元
                 <br />
-                <strong className="detail__td--priceNew">290元</strong>
+                <strong className="detail__td--priceNew">{currentPrice}元</strong>
               </td>
             </tr>
           </tbody>
         </table>
-        <div className="detail__remark">Extras</div>
+        <div className="detail__remark">{remark}</div>
         <div className="detail__more">
           <span>更多幕後特輯</span>
           <span className="detail__notice">

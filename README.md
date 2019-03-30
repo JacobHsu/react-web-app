@@ -67,6 +67,7 @@ category [react-slick](https://github.com/akiran/react-slick): React carousel co
 
 https://www.flaticon.com/packs/film-industry-14
 https://zh.wikipedia.org/wiki/电影类型
+http://www.ruanyifeng.com/blog/2016/09/redux_tutorial_part_three_react-redux.html  
 
 
 # deploy

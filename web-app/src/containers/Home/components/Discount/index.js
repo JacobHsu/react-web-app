@@ -56,7 +56,7 @@ class Discount extends Component {
             return (
               <Link
                 key={item.id}
-                to={`/detail/${item.id}`}
+                to={`/react-web-app/detail/${item.id}`}
                 className="discount__item"
               >
                 <div className="discount__itemPic">
