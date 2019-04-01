@@ -6,6 +6,7 @@ import ErrorToast from "../../components/ErrorToast";
 import { actions as appActions, getError } from "../../redux/modules/app";
 import Home from "../Home";
 import ProductDetail from "../ProductDetail";
+import Search from "../Search";
 
 
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path="/react-web-app/detail/:id" component={ProductDetail} />
+            <Route path="/search" component={Search} />
             <Route path="/" component={Home} />
           </Switch>
         </Router> 

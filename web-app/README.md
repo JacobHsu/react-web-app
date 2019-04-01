@@ -87,6 +87,17 @@ componentDidMount(@containers/ProductDetail/index) -> loadProductDetail (@redux/
 子 (@/components/ProductOverview) `this.props.data` 取得mock data  
 
 
+## 搜索
+
+containers/App 引入 路由要定義在home之上
+Home/components/HomeHeader 定義了Search頁的跳轉  
+
+搜索列表 和 搜索框 放同一組件 Components/SearchBox
+
+react中一般要將input元素 設置成一個受控組件
+
+`.searchBox__list { position: fixed;` 搜索的關鍵詞列表處於最上層  
+
 
 
 ## Remove
