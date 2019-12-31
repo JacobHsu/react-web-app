@@ -90,6 +90,10 @@ package.json
 
 `$ npm run deploy`
 
+## npm
+
+[![NPM](https://nodei.co/npm/react-slick.png?downloads=true&stars=true)](https://nodei.co/npm/react-slick/)  
+
 ### VS Code Reactjs snippets  
 
 Reactjs code snippets `rcc`  
