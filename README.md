@@ -60,7 +60,13 @@ import store from "./redux/store";
 ```
 `$ npm i react-redux react-router-dom redux redux-thunk`  
 
-# References 
+## 組件連接redux
+
+第一步 在redux模塊中定義view層組件所需要 `slectors` 從redux中獲取相關狀態
+第二步 在容器組件中 定義 `mapStateToProps` `mapDispatchToProps` 函數 將redux的state 轉化成組件的 props 也將 redux 中的 actions 轉化到組件中的 props 相關方法
+第三步 組件上使用 相關的 props 進行數據的展示和更改
+
+## References
 
 category [react-slick](https://github.com/akiran/react-slick): React carousel component   [Auto Play](https://react-slick.neostack.com/docs/example/auto-play) 
 `npm i react-slick`  
