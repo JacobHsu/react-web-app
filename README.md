@@ -2,7 +2,18 @@
 
 ## page
 
-src/containers/Home/compoents/ `HomeHeader Banner Category Headline Activity Discount LikeList`   
+Home/  
+│  
+├── HomeHeader  
+├── Banner  
+├── Category  
+├── Headline  
+├── Activity  
+├── Discount  
+├── LikeList  
+├── Footer  
+
+src/containers/Home/compoents/ `HomeHeader Banner Category Headline Activity Discount LikeList`
 src/components 通用組件　`Footer`
 
 商品詳情頁 Header, Product Overview, Info, Detail, Remark, BuyButton  
@@ -102,4 +113,4 @@ package.json
 
 ### VS Code Reactjs snippets  
 
-Reactjs code snippets `rcc`  
+Reactjs code snippets `rcc`
